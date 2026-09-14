@@ -1,0 +1,26 @@
+# Node & Build
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+
+# Environment & Secrets
+.env*
+!.env.example
+
+# Python & Streamlit
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.venv/
+.ipynb_checkpoints/
+.streamlit/
+*.egg-info/
+

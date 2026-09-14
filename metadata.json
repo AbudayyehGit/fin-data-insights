@@ -1,0 +1,6 @@
+{
+  "name": "FinData Insights Engine",
+  "description": "Enterprise Financial Data Cleansing & Analytics Proof-of-Work MVP with mock banking data, automated cleansing, statistical profiling, and trend analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
