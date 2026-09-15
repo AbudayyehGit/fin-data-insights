@@ -27,7 +27,8 @@ import { DataPreviewTab } from './components/DataPreviewTab';
 import { StatisticalProfilingTab } from './components/StatisticalProfilingTab';
 import { TrendAndCorrelationTab } from './components/TrendAndCorrelationTab';
 import { PythonDeploymentTab } from './components/PythonDeploymentTab';
-import { FolderGit2 } from 'lucide-react';
+import { CodeInspectorTab } from './components/CodeInspectorTab';
+import { FolderGit2, Code2 } from 'lucide-react';
 
 export default function App() {
   const [dataSource, setDataSource] = useState<'mock' | 'upload'>('mock');
@@ -35,7 +36,7 @@ export default function App() {
   const [seed, setSeed] = useState(42);
   const [rawRows, setRawRows] = useState<DataRow[]>([]);
   const [dateCol, setDateCol] = useState<string | null>('Transaction_Date');
-  const [activeTab, setActiveTab] = useState<'preview' | 'stats' | 'trends' | 'deployment'>('preview');
+  const [activeTab, setActiveTab] = useState<'preview' | 'stats' | 'trends' | 'inspector' | 'deployment'>('inspector');
 
   // File upload state
   const [isLoadingFile, setIsLoadingFile] = useState(false);
@@ -260,6 +261,20 @@ export default function App() {
               </button>
 
               <button
+                id="tab-btn-inspector"
+                type="button"
+                onClick={() => setActiveTab('inspector')}
+                className={`flex items-center gap-2 py-3 px-4 border-b-2 text-sm font-semibold transition whitespace-nowrap cursor-pointer ${
+                  activeTab === 'inspector'
+                    ? 'border-emerald-600 text-emerald-700 bg-white/60 rounded-t-lg shadow-2xs font-bold'
+                    : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'
+                }`}
+              >
+                <Code2 className="w-4 h-4 text-emerald-600" />
+                <span>🔍 Code Inspector (Multi-Jargon Commentary)</span>
+              </button>
+
+              <button
                 id="tab-btn-deployment"
                 type="button"
                 onClick={() => setActiveTab('deployment')}
@@ -301,6 +316,10 @@ export default function App() {
                 dateCol={dateCol}
                 correlationMatrix={correlationMatrix}
               />
+            )}
+
+            {activeTab === 'inspector' && (
+              <CodeInspectorTab />
             )}
 
             {activeTab === 'deployment' && (
